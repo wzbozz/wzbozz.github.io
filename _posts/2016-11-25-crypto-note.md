@@ -11,7 +11,7 @@ mathjax: true
 </details>
 
 $$
-\sum _i = 1000
+ax + b = y
 $$
 
 ## RSA 算法
