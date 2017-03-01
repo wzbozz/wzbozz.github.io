@@ -32,7 +32,7 @@ author: wzbozz
 - SSH远程访问：两条命令`sudo apt-get install openssh-server; sudo /etc/init.d/ssh resart`，可以实现远程连接；
 
 ## Python 基础：
- - [CS231n](cs231n.github.io)
+ - [CS231n](cs231n.github.io) 也是很好的深度学习入门
 
 ## Jupyter Notebook (IPython Notebook)简介:
  - 计算
