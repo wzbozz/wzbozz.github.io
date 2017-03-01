@@ -1,6 +1,6 @@
 ---
 date: 2017-02-24
-title: "JMI科普"
+title: "深度学习的浅度科普 for JMI"
 layout: post
 author: wzbozz
 ---
@@ -21,6 +21,9 @@ author: wzbozz
   - [U盘安装盘制作](https://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows)
   - 安装系统（略）
 
+## Ubuntu(Linux)基本命令：
+- 
+
 ## 软件安装：
 - 更改清华镜像源：系统设置->软件与更新->下载，改为`mirrors.tuna.tsinghua.edu.cn`
 - 安装python环境：左上搜索terminal打开，运行sudo apt install -y python-dev python-pip；
@@ -29,23 +32,31 @@ author: wzbozz
 - SSH远程访问：两条命令`sudo apt-get install openssh-server; sudo /etc/init.d/ssh resart`，可以实现远程连接；
 
 ## Python 基础：
- - 看书去吧
+ - [CS231n](cs231n.github.io)
 
-## Jupyter Notebook简介:
+## Jupyter Notebook (IPython Notebook)简介:
  - 计算
  - 公式
  - MarkDown
  - 画图
  - 插图
-
+ 
 ## 远程访问：
  - `ssh your_user_name@xx.xx.xx.xx`
-
+ 
 ## 编程：
  - 打开terminal，输入jupyter notebook运行后台计算服务，可以用浏览器访问;
  - 本地情况下，浏览器打开`localhost:8888`
  - 远程情况下，记下服务器ip地址，浏览器打开`xx.xx.xx.xx:8888`
  - 参考TensorFlow[教程](https://www.tensorflow.org/get_started/get_started)开始学习；
+
+## 深度学习框架：
+ - Theano
+ - Caffe
+ - TensorFlow
+ - Torch
+ - MxNet
+ - Neon
 
 ## 深度学习基础
 ### 特别推荐：
