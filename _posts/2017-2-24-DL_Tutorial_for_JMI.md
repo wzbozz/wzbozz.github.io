@@ -43,7 +43,7 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
 
 ## Ubuntu(Linux)基本命令：
 - [bash](https://learnxinyminutes.com/docs/zh-cn/bash-cn/)
-- ls, cd, cp, mv, rm, apt, pip
+- ls, cd, cp, mv, rm, sudo, apt, pip
 - vi略(图形界面gedit)
 
 ## 软件安装：
@@ -69,6 +69,7 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
 - [LeetCode](https://leetcode.com/)
 
 ## 远程访问：
+ - sudo apt install openssh-server
  - `ssh your_user_name@xx.xx.xx.xx`
  
 ## 编程：
@@ -78,7 +79,7 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
  - 参考TensorFlow[教程](https://www.tensorflow.org/get_started/get_started)开始学习；
 
 ## git 
-- clone
+- git clone!
 - [tutorial](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
 ## 深度学习框架：
@@ -91,7 +92,8 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
 
 ## kaggle
  - [tutorial](https://www.kaggle.com/wiki/Tutorials)
- - playground & 101 [https://www.zhihu.com/question/23987009]
+ - [playground & 101](https://www.zhihu.com/question/23987009)
+
 ## 深度学习基础
 ### 特别推荐：
 - [*Neural Networks and Deep Learning*](http://neuralnetworksanddeeplearning.com/index.html) By **Michael Nielsen**(《量子计算与量子信息》的作者)
