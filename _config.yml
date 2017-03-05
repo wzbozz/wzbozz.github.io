@@ -1,18 +1,18 @@
 # Site settings
-title: Scateu Blog - S.B.
-email: scateu@gmail.com
+title: WzBozz Blog
+email: zbwang86@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Yet another Scateu Blog (aka SB)
+  WzBozz'z Blog 
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://scateu.github.io" # the base hostname & protocol for your site
-twitter_username: scateu
-github_username:  scateu
-linkedin_url: "http://cn.linkedin.com/in/scateu"
-facebook_url: "https://www.facebook.com/kangw2"
+url: "http://wzbozz.github.io" # the base hostname & protocol for your site
+twitter_username: wzbozz
+github_username:  wzbozz
+linkedin_url: "" 
+facebook_url: ""
 flickr_url: ""
-disqus_shortname: scateugithubio
+disqus_shortname: wzbozzgithubio
 
-imageurl: "https://scateu.github.io/images"
+imageurl: "https://wzbozz.github.io/images"
 
 # Build settings
 markdown: kramdown
