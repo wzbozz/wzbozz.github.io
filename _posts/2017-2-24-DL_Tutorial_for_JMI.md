@@ -13,18 +13,15 @@ mathjax: true
 > 系统->python->jupyter->tensorflow->keras->mnist
 
 ```flowchart
-st=>start: Start|past:>http://www.google.com[blank]
-e=>end: End|future:>http://www.google.com
-op1=>operation: Linux|past
-op2=>operation: Python|current
+st=>start: Start
+e=>end: End
+op1=>operation: Linux
+op2=>operation: Python
 op3=>operation: Jupyter
 op4=>operation: Tensorflow
 op5=>operation: Keras
 op6=>operation: Mnist 
-op11=>operation: Bash:>https://learnxinyminutes.com/docs/zh-cn/bash-cn
-st->op1->op2->op3->op4->op5->op6->e
-op1(right)->op11
-
+st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right)->e
 ```
 
 ## 硬件搭建：
