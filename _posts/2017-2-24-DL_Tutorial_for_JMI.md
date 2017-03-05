@@ -43,7 +43,7 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
 
 ## Ubuntu(Linux)基本命令：
 - [bash](https://learnxinyminutes.com/docs/zh-cn/bash-cn/)
-- ls, cd, cp, mv, rm, pip
+- ls, cd, cp, mv, rm, apt, pip
 - vi略(图形界面gedit)
 
 ## 软件安装：
@@ -65,8 +65,8 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
  - 插图
 
 ## Python 基础：
- - [CS231n](cs231n.github.io) 也是很好的深度学习入门
-
+- [用Python做科学计算](http://old.sebug.net/paper/books/scipydoc/index.html)
+- [LeetCode](https://leetcode.com/)
 
 ## 远程访问：
  - `ssh your_user_name@xx.xx.xx.xx`
@@ -77,7 +77,6 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
  - 远程情况下，记下服务器ip地址，浏览器打开`xx.xx.xx.xx:8888`
  - 参考TensorFlow[教程](https://www.tensorflow.org/get_started/get_started)开始学习；
 
-
 ## git 
 - clone
 - [tutorial](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
@@ -85,7 +84,7 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
 ## 深度学习框架：
  - Theano
  - Caffe
- - TensorFlow
+ - __TensorFlow__
  - Torch
  - MxNet
  - Neon
@@ -95,7 +94,10 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
  - playground & 101 [https://www.zhihu.com/question/23987009]
 ## 深度学习基础
 ### 特别推荐：
-  - [*Neural Networks and Deep Learning*](http://neuralnetworksanddeeplearning.com/index.html) By **Michael Nielsen**(《量子计算与量子信息》的作者)
+- [*Neural Networks and Deep Learning*](http://neuralnetworksanddeeplearning.com/index.html) By **Michael Nielsen**(《量子计算与量子信息》的作者)
+-  Convolutional Neural Networks for Visual Recognition [CS231n](cs231n.github.io) 
+- [Deep Learning](http://www.deeplearningbook.org/)
+- 周志华西瓜书
 
 ## 手写识别：
   - [MNIST For ML Beginners](https://www.tensorflow.org/get_started/mnist/beginners)
