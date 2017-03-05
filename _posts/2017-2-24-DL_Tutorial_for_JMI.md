@@ -21,7 +21,7 @@ op3=>operation: Jupyter
 op4=>operation: Tensorflow
 op5=>operation: Keras
 op6=>operation: Mnist 
-op11=>operation:Bash:>https://learnxinyminutes.com/docs/zh-cn/bash-cn/
+op11=>operation: Bash:>https://learnxinyminutes.com/docs/zh-cn/bash-cn
 st->op1->op2->op3->op4->op5->op6->e
 op1(right)->op11
 
