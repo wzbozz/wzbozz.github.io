@@ -15,14 +15,16 @@ mathjax: true
 ```flowchart
 st=>start: Start|past:>http://www.google.com[blank]
 e=>end: End|future:>http://www.google.com
-op1=>operation: 系统|past
+op1=>operation: Linux|past
 op2=>operation: Python|current
 op3=>operation: Jupyter
 op4=>operation: Tensorflow
 op5=>operation: Keras
 op6=>operation: Mnist 
-
+op11=>operation:Bash:>https://learnxinyminutes.com/docs/zh-cn/bash-cn/
 st->op1->op2->op3->op4->op5->op6->e
+op1(right)->op11
+
 ```
 
 ## 硬件搭建：
