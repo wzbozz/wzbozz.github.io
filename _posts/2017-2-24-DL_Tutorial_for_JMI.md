@@ -85,6 +85,7 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
 </section> <section markdown="1">
 ## Python 基础：
 - [用Python做科学计算](http://old.sebug.net/paper/books/scipydoc/index.html)
+- [Dive into Python](http://www.diveintopython.net/)
 - [LeetCode](https://leetcode.com/)
 </section> <section markdown="1">
 ## 远程访问：
