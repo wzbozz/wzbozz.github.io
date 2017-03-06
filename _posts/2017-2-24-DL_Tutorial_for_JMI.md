@@ -9,11 +9,11 @@ mathjax: true
 ---
 
 <section markdown="1">
-# Outline
+# 深度学习的浅度科普
+## Outline
 
 > 目标： 从装系统到识别手写。
 
-> 系统->python->jupyter->tensorflow->keras->mnist
 </section> <section markdown="1">
 ```flowchart
 st=>start: Start
@@ -26,6 +26,18 @@ op5=>operation: Keras
 op6=>operation: Mnist 
 st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right)->e
 ```
+</section> <section markdown="1">
+## 神经网络与深度学习
+- 神经网络
+- ![](http://cs231n.github.io/assets/nn1/neuron_model.jpeg)
+- 前向网络
+- ![](http://cs231n.github.io/assets/nn1/neural_net2.jpeg)
+- 卷积神经网络
+- ![](http://cs231n.github.io/assets/cnn/depthcol.jpeg)
+- [MNIST手写识别示例](http://cs.stanford.edu/people/karpathy/convnetjs/demo/mnist.html)
+- 梯度反向传播
+- ![](http://cs231n.github.io/assets/nn3/opt2.gif)
+
 </section> <section markdown="1">
 ## 硬件搭建：
 - Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz
@@ -54,13 +66,14 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
 - 安装python环境：左上搜索terminal打开，运行sudo apt install -y python-dev python-pip；
 - 安装jupyter: 更改为清华的pip源([步骤](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/))，运行sudo pip install -U jupyter 安装jupyter notebook，[配置远程访问](http://www.cnblogs.com/zhanglianbo/p/6109939.html)，**注意**：不会用vim教程中`vim ~/.jupyter/jupyter_notebook_config.py`改为`gedit ~/.jupyter/jupyter_notebook_config.py`;
 - 安装[TensorFlow](https://www.tensorflow.org/install/install_linux): 步骤较多，其中包含了安装NVIDIA相关库及python库的步骤，注意选择with GPU，选择Installing with native pip的方式比较简单，同样也有清华的[安装源](https://mirrors.tuna.tsinghua.edu.cn/help/tensorflow/)可以选择；
-- SSH远程访问：两条命令`sudo apt-get install openssh-server; sudo /etc/init.d/ssh resart`，可以实现远程连接；
+- 安装[Keras](https://keras.io):`sudo pip install keras`
+
 </section> <section markdown="1">
 ## MacOS
 - [Brew](https://brew.sh/)
 - 清华镜像使用[帮助](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/)
 </section> <section markdown="1">
-## Jupyter Notebook (IPython Notebook)简介:
+## Jupyter Notebook ([IPython Notebook]())简介:
  - 计算
  - 公式
  - MarkDown
@@ -72,7 +85,7 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
 - [LeetCode](https://leetcode.com/)
 </section> <section markdown="1">
 ## 远程访问：
- - sudo apt install openssh-server
+ - `sudo apt install openssh-server`
  - `ssh your_user_name@xx.xx.xx.xx`
  </section> <section markdown="1">
 ## 编程：
