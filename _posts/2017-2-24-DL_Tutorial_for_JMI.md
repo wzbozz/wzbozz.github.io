@@ -30,11 +30,14 @@ st(right)->op1(right)->op2(right)->op3(right)->op4(right)->op5(right)->op6(right
 ## 神经网络与深度学习
 - 神经网络
 - ![](http://cs231n.github.io/assets/nn1/neuron_model.jpeg)
+</section> <section markdown="1">
 - 前向网络
 - ![](http://cs231n.github.io/assets/nn1/neural_net2.jpeg)
+</section> <section markdown="1">
 - 卷积神经网络
 - ![](http://cs231n.github.io/assets/cnn/depthcol.jpeg)
 - [MNIST手写识别示例](http://cs.stanford.edu/people/karpathy/convnetjs/demo/mnist.html)
+</section> <section markdown="1">
 - 梯度反向传播
 - ![](http://cs231n.github.io/assets/nn3/opt2.gif)
 
