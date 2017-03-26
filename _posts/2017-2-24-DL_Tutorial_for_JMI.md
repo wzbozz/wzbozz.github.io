@@ -1,7 +1,7 @@
 ---
 date: 2017-02-24
 title: "深度学习的浅度科普 for JMI"
-layout: slide
+layout: post 
 theme: night
 author: wzbozz
 diagram: true
