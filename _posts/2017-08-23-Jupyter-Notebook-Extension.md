@@ -3,6 +3,8 @@
 > fast.ai课程中notebook样式配置。
 >
 > Jupyter Notebook 安装 3.x `pip install jupyter`, 2.x `pip install ipython==5.4 jupyter`
+>
+> 远程访问设置文章较多，比如参考[这篇](http://www.cnblogs.com/yangxiaolan/p/5778305.html) 。
 
 1. [Collapse Headings](http://jupyter-contrib-nbextensions.readthedocs.io/en/latest/index.html)
 
