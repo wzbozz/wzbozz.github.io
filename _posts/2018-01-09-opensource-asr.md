@@ -1,5 +1,5 @@
 ---
-title: "Comparison of Kaldi, CMU Sphinx, HTK"
+title: "Comparison of Kaldi, CMU Sphinx, HTK (and Kaldi wins)"
 layout: post
 date: 2018-01-09
 mathjax: true
@@ -7,8 +7,6 @@ diagram: true
 ruby_notation: true
 ---
 
-# Comparison of Kaldi, CMU Sphinx, HTK (and Kaldi wins)
----
 ### several references
 - http://suendermann.com/su/pdf/oasis2014.pdf
 - http://www.ktl.elf.stuba.sk/~kacur/clanky/HTKvsSPHINX_RTT_brno_06.pdf
