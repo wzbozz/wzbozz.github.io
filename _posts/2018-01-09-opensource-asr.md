@@ -7,7 +7,7 @@ diagram: true
 ruby_notation: true
 ---
 
-### several references
+### Several references
 - http://suendermann.com/su/pdf/oasis2014.pdf
 - http://www.ktl.elf.stuba.sk/~kacur/clanky/HTKvsSPHINX_RTT_brno_06.pdf
 - http://homepages.inf.ed.ac.uk/aghoshal/pubs/asru11-kaldi.pdf
@@ -17,4 +17,8 @@ ruby_notation: true
 ### and an researcher
 - https://www.quora.com/profile/Nickolay-Shmyrev/
 
-
+### and Kaldi tutorials
+- http://kaldi-asr.org/doc/kaldi_for_dummies.html
+- https://chrisearch.wordpress.com/2017/03/11/speech-recognition-using-kaldi-extending-and-using-the-aspire-model/
+- http://www.danielpovey.com/files/Lecture1.pdf
+- http://white.ucc.asn.au/Kaldi-Notes/tidigits/train
