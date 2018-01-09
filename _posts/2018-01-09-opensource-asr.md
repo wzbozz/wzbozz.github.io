@@ -22,3 +22,4 @@ ruby_notation: true
 - https://chrisearch.wordpress.com/2017/03/11/speech-recognition-using-kaldi-extending-and-using-the-aspire-model/
 - http://www.danielpovey.com/files/Lecture1.pdf
 - http://white.ucc.asn.au/Kaldi-Notes/tidigits/train
+- (HMM-GMM)[https://www.inf.ed.ac.uk/teaching/courses/asr/2016-17/asr03-hmmgmm-handout.pdf]
