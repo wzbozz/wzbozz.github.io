@@ -1,3 +1,12 @@
+---
+title: "Comparison of Kaldi, CMU Sphinx, HTK"
+layout: post
+date: 2018-01-09
+mathjax: true
+diagram: true
+ruby_notation: true
+---
+
 # Comparison of Kaldi, CMU Sphinx, HTK
 ---
 ## several references
