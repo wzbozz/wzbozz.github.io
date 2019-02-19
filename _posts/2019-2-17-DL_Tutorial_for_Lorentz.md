@@ -1,9 +1,10 @@
 ---
+layout: slide
 date: 2019-02-17
 title: "Lorentz技术分享"
-layout: slides
 theme: night
 author: wzbozz
+transition: slide 
 diagram: true
 mathjax: true
 ---
