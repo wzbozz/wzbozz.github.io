@@ -16,10 +16,11 @@ mathjax: true
 </section> <section markdown="1">
 
 ## Outline
-    - 神经网络/深度学习简介
-    - 深度学习图像分类(Image Classification)
-    - 深度学习目标检测(Object Detection)
-    - 3D目标检测(3D Object Detection)/摄像头激光雷达融合(Camera Lidar Fusion)
+
+- 神经网络/深度学习简介
+- 深度学习图像分类(Image Classification)
+- 深度学习目标检测(Object Detection)
+- 3D目标检测(3D Object Detection)/摄像头激光雷达融合(Camera Lidar Fusion)
 
 </section> <section markdown="1">
 
@@ -70,7 +71,7 @@ mathjax: true
 
 </section> <section markdown="1"> 
 
-## 图像识别
+## [图像识别](https://medium.com/zylapp/review-of-deep-learning-algorithms-for-image-classification-5fdbca4a05e2)
 
 
 ![img]({{ site.imageurl }}/imagenet.jpeg)
@@ -124,6 +125,7 @@ This same year, [M. Lin et al. (2014)](https://arxiv.org/abs/1312.4400.pdf) have
 
 *Inception module. Source:* [*C. Szegedy et al. (2014)*](https://arxiv.org/abs/1409.4842)
 
+</section> <section markdown="1">
 
 
 ![img]({{ site.imageurl }}/GoogLeNet.png)
@@ -134,6 +136,8 @@ This same year, [M. Lin et al. (2014)](https://arxiv.org/abs/1312.4400.pdf) have
 
 
 In 2015, [C. Szegedy et al. (2015)](https://arxiv.org/abs/1512.00567) developed the Inception V2 model, mostly inspired by the first version. The authors have however changed the 5x5 filter in the inception modules by two 3x3 filters, a 3x3 convolution and a 3x1 fully-connected slided over the first one. This method called convolution factorization decreases the number of parameters in each inception module, thus reducing the computational cost. This model reached a top-5 error rate of 5.6% on the 2012 ImageNet challenge.
+
+</section> <section markdown="1">
 
 Going further, [C. Szegedy et al. (2015)](https://arxiv.org/abs/1512.00567) have fine-tuned the batch-normalization and used a higher resolution input, the famous Inception V3 model. They reduced the strides of the first two layers and removed a max-pool layer to analyze images with higher precision. They finally reached a top-5 error rate of 3.58% over the 2012 ImageNet challenge.
 
@@ -182,18 +186,99 @@ Architecture of an Inception-resnet-A module. Source: [*C. Szegedy et al. (2016)
 ## DenseNet
 
 
-
 ### ![See the source image]({{ site.imageurl }}/densenet.png)
 
 Original DenseNet paper: <https://arxiv.org/pdf/1608.06993v3.pdf>
+
+</section> <section markdown="1">
 
 ![See the source image]({{ site.imageurl }}/res-vs-dense.png)
 
 </section> <section markdown="1">
 
-## 应用：Transfer Learning
+## [MobileNet & ShuffleNet](https://medium.com/@yu4u/why-mobilenet-and-its-variants-e-g-shufflenet-are-fast-1c7048b9618d)
 
-示例 https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html
+![See the source image]({{ site.imageurl }}/conv.png)
+</section> <section markdown="1">
+![See the source image]({{ site.imageurl }}/full_conv.png)
+![See the source image]({{ site.imageurl }}/grp_conv.png)
+![See the source image]({{ site.imageurl }}/dep_conv.png)
+</section> <section markdown="1">
+
+## 快速应用：Transfer Learning
+
+[示例](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) 
+- ConvNet as fixed feature extractor
+- Finetuning the convnet
+</section> <section markdown="1">
+
+## 深度学习目标检测(Object Detection)
+#### 参考文章
+- https://medium.com/@jonathan_hui/object-detection-series-24d03a12f904
+- https://cv-tricks.com/object-detection/faster-r-cnn-yolo-ssd/
+- https://towardsdatascience.com/r-cnn-fast-r-cnn-faster-r-cnn-yolo-object-detection-algorithms-36d53571365e
+- https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/
+![See the source image]({{ site.imageurl }}/img_tasks.png)
+</section> <section markdown="1">
+![See the source image]({{ site.imageurl }}/Sliding-window.gif)
+</section> <section markdown="1">
+## history
+1. Object Detection using Hog Features:
+	- Hog features are computationally inexpensive 
+2. Region-based Convolutional Neural Networks(R-CNN):
+
+3. Spatial Pyramid Pooling(SPP-net):
+
+4. Fast R-CNN:
+
+5. Faster R-CNN:
+
+  ------
+
+6. YOLO(You only Look Once):
+
+7. Single Shot Detector(SSD):
+</section> <section markdown="1">
+[Region-based Convolutional Neural Networks(R-CNN)](https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/)
+- First, an image is taken as an input:
+- Then, we get the Regions of Interest (ROI) using some proposal method (for example, selective search as seen above):
+- All these regions are then reshaped as per the input of the CNN, and each region is passed to the ConvNet:
+- CNN then extracts features for each region and SVMs are used to divide these regions into different classes:
+- Finally, a bounding box regression (Bbox reg) is used to predict the bounding boxes for each identified region:
+
+![See the source image]({{ site.imageurl }}/rcnn.png)
+</section> <section markdown="1">
+![See the source image]({{ site.imageurl }}/SSDvsYOLO.png)
+
+</section> <section markdown="1">
+![See the source image]({{ site.imageurl }}/yolo_bm.png)
+</section> <section markdown="1">
+## [3D目标检测](https://medium.com/@whatdhack/fusing-lidar-and-camera-data-a-survey-of-deep-learning-approaches-4b8ddedee2dc)(3D Object Detection)
+### Datasets
+- KITTI
+- Apollo (Baidu)
+
+### Models
+- 3D voxel grid based
+	- VoxelNet, 3D ConvNet, Fast-and-Furious
+- 2D Bird’s Eye View (BEV) based
+	- MV3D, Fast-and-Furious, PIXOR, AVOD
+- Adhoc 
+	- PointFusion, and Frustum Pointnet 
+</section> <section markdown="1">
+
+## [KITTI](http://www.cvlibs.net/datasets/kitti)
+![See the source image]({{ site.imageurl }}/kitti.png)
+
+</section> <section markdown="1">
+## VoxelNet
+
+![See the source image]({{ site.imageurl }}/VoxelNet.png)
+
+</section> <section markdown="1">
+## PointNet / PointNet++ and Fustrum PointNet
+
+![See the source image]({{ site.imageurl }}/PointNet.png)
 
 </section> <section markdown="1">
 
