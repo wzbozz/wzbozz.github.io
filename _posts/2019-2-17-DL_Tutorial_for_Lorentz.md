@@ -1,5 +1,5 @@
 ---
-layout: slide
+layout: post
 date: 2019-02-17
 title: "Lorentz技术分享"
 theme: night
@@ -278,7 +278,7 @@ Original DenseNet paper: <https://arxiv.org/pdf/1608.06993v3.pdf>
 </section> <section markdown="1">
 ## PointNet / PointNet++ and Fustrum PointNet
 
-![See the source image]({{ site.imageurl }}/PointNet.png)
+![See the source image]({{ site.imageurl }}/PointNet.jpg)
 
 </section> <section markdown="1">
 
