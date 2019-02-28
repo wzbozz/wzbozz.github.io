@@ -12,7 +12,8 @@ facebook_url: ""
 flickr_url: ""
 disqus_shortname: wzbozzgithubio
 
-imageurl: "https://wzbozz.github.io/images"
+imageurl: "/images"
+#imageurl: "https://wzbozz.github.io/images"
 
 # Build settings
 markdown: kramdown
