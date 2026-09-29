@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/css/company.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
 
   <header class="site-header" data-header>
     <a class="brand" href="#top" aria-label="IdentiQ home">
@@ -18,57 +18,61 @@
       <span>IdentiQ</span>
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
-      <span>Menu</span><i></i><i></i>
+      <span data-i18n="menuLabel">Menu</span><i></i><i></i>
     </button>
-    <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
-      <a href="#architecture">Architecture</a>
-      <a href="#control">Control</a>
-      <a href="#model">Model</a>
-      <a class="nav-cta" href="#contact">Connect <span aria-hidden="true">↗</span></a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-i18n-aria-label="primaryNav" data-nav>
+      <a href="#architecture" data-i18n="navArchitecture">Architecture</a>
+      <a href="#control" data-i18n="navControl">Control</a>
+      <a href="#advantages" data-i18n="navAdvantages">Advantages</a>
+      <div class="language-switcher" role="group" aria-label="Language" data-i18n-aria-label="languageLabel">
+        <button type="button" data-language="en" aria-pressed="true">EN</button>
+        <button type="button" data-language="zh" aria-pressed="false">中文</button>
+      </div>
+      <a class="nav-cta" href="#contact"><span data-i18n="navConnect">Connect</span> <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow reveal">Wave-defined ion trapping</p>
-        <h1 id="hero-title" class="reveal">Shape the field.<br><em>Move the trap.</em></h1>
-        <p class="hero-lede reveal">IdentiQ is developing a planar ion-trap architecture that uses coherent surface-acoustic-wave electric fields to define reconfigurable radial RF-null arrays.</p>
+        <p class="eyebrow reveal" data-i18n="heroEyebrow">Wave-defined ion trapping</p>
+        <h1 id="hero-title" class="reveal" data-i18n-html="heroTitle">Shape the field.<br><em>Move the trap.</em></h1>
+        <p class="hero-lede reveal" data-i18n="heroLede">IdentiQ is developing a planar ion-trap architecture that uses coherent surface-acoustic-wave electric fields to define reconfigurable radial RF-null arrays.</p>
         <div class="hero-actions reveal">
-          <a class="button-primary" href="#architecture">Explore the architecture <span aria-hidden="true">↓</span></a>
-          <span class="status"><i></i> Research-stage platform</span>
+          <a class="button-primary" href="#architecture"><span data-i18n="exploreArchitecture">Explore the architecture</span> <span aria-hidden="true">↓</span></a>
+          <span class="status"><i></i> <span data-i18n="researchStage">Research-stage platform</span></span>
         </div>
       </div>
 
-      <div class="field-stage reveal" aria-label="Normalized XY pseudopotential map from two orthogonal standing surface acoustic waves. Outlined points mark the checkerboard RF-null sublattice.">
-        <div class="stage-top"><span>PSEUDOPOTENTIAL / XY PLANE</span><span>IDEALIZED MODEL</span></div>
+      <div class="field-stage reveal" aria-label="Normalized XY pseudopotential map from two orthogonal standing surface acoustic waves. Outlined points mark the checkerboard RF-null sublattice." data-i18n-aria-label="fieldAria">
+        <div class="stage-top"><span data-i18n="fieldTitle">PSEUDOPOTENTIAL / XY PLANE</span><span data-i18n="idealizedModel">IDEALIZED MODEL</span></div>
         <canvas id="field-canvas"></canvas>
-        <div class="stage-bottom"><span>TWO ORTHOGONAL STANDING SAWS</span><span class="live"><i></i> RF NULLS</span></div>
+        <div class="stage-bottom"><span>IDT: p = λ/2 · w = g = λ/4</span><span class="live"><i></i> <span data-i18n="rfNulls">RF NULLS</span></span></div>
       </div>
 
     </section>
 
-    <section class="brand-strip" aria-label="IdentiQ brand">
-      <img src="assets/identiq-logo-source.png" alt="IdentiQ — 全同量芯">
-      <p><span>IDENTITY</span> A wave-defined approach to scalable trapped-ion hardware.</p>
+    <section class="brand-strip" aria-label="IdentiQ brand" data-i18n-aria-label="brandAria">
+      <div class="brand-lockup" aria-label="IdentiQ"><img src="assets/favicon.svg" alt=""><strong>IdentiQ</strong></div>
+      <p><span>IDENTITY</span> <span data-i18n="brandStatement">A wave-defined approach to scalable trapped-ion hardware.</span></p>
     </section>
 
     <section class="thesis section-pad" aria-labelledby="thesis-title">
-      <div class="section-index reveal">01 / THESIS</div>
+      <div class="section-index reveal" data-i18n="thesisIndex">01 / THESIS</div>
       <div class="thesis-copy">
-        <p class="kicker reveal">A different control surface</p>
-        <h2 id="thesis-title" class="reveal">Instead of defining every RF feature in metal, define a lattice in the <em>acoustic field.</em></h2>
+        <p class="kicker reveal" data-i18n="thesisKicker">A different control surface</p>
+        <h2 id="thesis-title" class="reveal" data-i18n-html="thesisTitle">Instead of defining every RF feature in metal, define a lattice in the <em>acoustic field.</em></h2>
       </div>
-      <p class="thesis-note reveal">Two orthogonal standing surface acoustic waves can produce a checkerboard of radial RF nulls above a piezoelectric chip. Spatial phase shifts translate the pattern globally, while dedicated DC electrodes provide axial confinement and compensation.</p>
+      <p class="thesis-note reveal" data-i18n="thesisNote">Two orthogonal standing surface acoustic waves can produce a checkerboard of radial RF nulls above a piezoelectric chip. Spatial phase shifts translate the pattern globally, while dedicated DC electrodes provide axial confinement and compensation.</p>
     </section>
 
     <section class="architecture section-pad" id="architecture" aria-labelledby="architecture-title">
       <div class="section-heading reveal">
         <div>
-          <div class="section-index">02 / ARCHITECTURE</div>
-          <p class="kicker">Four coherent directions.<br>One wave-defined plane.</p>
+          <div class="section-index" data-i18n="architectureIndex">02 / ARCHITECTURE</div>
+          <p class="kicker" data-i18n-html="architectureKicker">Four coherent directions.<br>One wave-defined plane.</p>
         </div>
-        <h2 id="architecture-title">How the field<br>becomes a trap.</h2>
+        <h2 id="architecture-title" data-i18n-html="architectureTitle">How the field<br>becomes a trap.</h2>
       </div>
 
       <div class="architecture-diagram reveal">
@@ -77,93 +81,104 @@
           <div class="chip-ion"></div>
           <div class="wave wave-x"></div>
           <div class="wave wave-y"></div>
-          <span class="chip-label label-drive">COHERENT RF</span>
-          <span class="chip-label label-null">RF NULL ARRAY</span>
-          <span class="chip-label label-dc">DC AXIAL CONTROL</span>
+          <span class="chip-label label-drive" data-i18n="coherentRf">COHERENT RF</span>
+          <span class="chip-label label-null" data-i18n="rfNullArray">RF NULL ARRAY</span>
+          <span class="chip-label label-dc" data-i18n="dcAxialControl">DC AXIAL CONTROL</span>
         </div>
         <ol class="architecture-steps">
-          <li><span>01</span><div><h3>Launch</h3><p>Opposing IDTs—or an IDT and reflector—establish coherent standing SAWs along two in-plane axes.</p></div></li>
-          <li><span>02</span><div><h3>Intersect</h3><p>The evanescent electric fields overlap above the surface, creating an alternating checkerboard of RF-null lines.</p></div></li>
-          <li><span>03</span><div><h3>Complete</h3><p>Separate static electrodes close the third dimension and compensate stray fields. The SAW field alone is not a complete 3D trap.</p></div></li>
+          <li><span>01</span><div><h3 data-i18n="stepLaunchTitle">Launch</h3><p data-i18n="stepLaunchBody">Opposing IDTs—or an IDT and reflector—establish coherent standing SAWs along two in-plane axes.</p></div></li>
+          <li><span>02</span><div><h3 data-i18n="stepIntersectTitle">Intersect</h3><p data-i18n="stepIntersectBody">The evanescent electric fields overlap above the surface, creating an alternating checkerboard of RF-null lines.</p></div></li>
+          <li><span>03</span><div><h3 data-i18n="stepCompleteTitle">Complete</h3><p data-i18n="stepCompleteBody">Separate static electrodes close the third dimension and compensate stray fields. The SAW field alone is not a complete 3D trap.</p></div></li>
         </ol>
       </div>
     </section>
 
     <section class="control section-pad" id="control" aria-labelledby="control-title">
       <div class="control-copy">
-        <div class="section-index reveal">03 / CONTROL</div>
-        <p class="kicker reveal">Program the field, not the metal</p>
-        <h2 id="control-title" class="reveal">A lattice with a phase knob.</h2>
-        <p class="control-intro reveal">In the idealized model, the nearest-neighbor spacing is set by acoustic wavelength. Changing the spatial phase translates the whole RF-null pattern without redrawing the chip.</p>
+        <div class="section-index reveal" data-i18n="controlIndex">03 / CONTROL</div>
+        <p class="kicker reveal" data-i18n="controlKicker">Program the field, not the metal</p>
+        <h2 id="control-title" class="reveal" data-i18n="controlTitle">Control both axes.</h2>
+        <p class="control-intro reveal" data-i18n="controlIntro">Spatial phases translate the two-dimensional pattern. Frequencies set wavelength and IDT geometry; exact stationary RF nulls require frequency lock and a common temporal RF phase.</p>
 
         <div class="equations reveal">
-          <div><span>LATTICE SPACING</span><strong>d<sub>lat</sub> = λ / √2</strong></div>
-          <div><span>GLOBAL TRANSLATION</span><strong>Δx = −Δφ<sub>x</sub> / k</strong></div>
-          <div><span>HEIGHT DECAY</span><strong>A<sub>h</sub> = A<sub>s</sub>e<sup>−kh</sup></strong></div>
+          <div><span data-i18n="latticeSpacing">LATTICE SPACING</span><strong>d<sub>lat</sub> = λ / √2</strong></div>
+          <div><span data-i18n="globalTranslation">GLOBAL TRANSLATION</span><strong>(Δx, Δy) = (−Δφ<sub>x</sub>/k, −Δφ<sub>y</sub>/k)</strong></div>
+          <div><span data-i18n="idtGeometry">SINGLE-FINGER IDT</span><strong>p = λ/2, w = g = λ/4</strong></div>
         </div>
       </div>
 
       <div class="phase-lab reveal">
-        <div class="lab-head"><span>PHASE TRANSLATION</span><output id="phase-output" for="phase-control">0.00π</output></div>
-        <canvas id="phase-canvas" aria-label="Interactive visualization of phase-controlled lattice translation"></canvas>
-        <label for="phase-control">Shift the standing-wave phase</label>
-        <input id="phase-control" type="range" min="-100" max="100" value="0" aria-label="Shift the standing-wave phase">
-        <div class="lab-scale"><span>−π</span><span>0</span><span>+π</span></div>
+        <div class="lab-head"><span data-i18n="fieldExplorer">2D FIELD CONTROL</span><output id="coherence-status" data-state="locked">COHERENT LOCK</output></div>
+        <canvas id="phase-canvas" aria-label="Interactive visualization of two-axis phase and frequency control" data-i18n-aria-label="phaseCanvasAria"></canvas>
+        <div class="axis-controls">
+          <fieldset>
+            <legend>X AXIS</legend>
+            <div class="control-label"><label for="phase-x" data-i18n-html="phaseXLabel">Spatial phase φ<sub>x</sub></label><output id="phase-x-output" for="phase-x">0.00π</output></div>
+            <input id="phase-x" type="range" min="-100" max="100" value="0">
+            <div class="lab-scale"><span>−π</span><span>0</span><span>+π</span></div>
+            <div class="control-label frequency-label"><label for="frequency-x" data-i18n-html="frequencyXLabel">Frequency f<sub>x</sub></label><output id="frequency-x-output" for="frequency-x">10 MHz</output></div>
+            <input id="frequency-x" type="range" min="1" max="100" step="1" value="10">
+          </fieldset>
+          <fieldset>
+            <legend>Y AXIS</legend>
+            <div class="control-label"><label for="phase-y" data-i18n-html="phaseYLabel">Spatial phase φ<sub>y</sub></label><output id="phase-y-output" for="phase-y">0.00π</output></div>
+            <input id="phase-y" type="range" min="-100" max="100" value="0">
+            <div class="lab-scale"><span>−π</span><span>0</span><span>+π</span></div>
+            <div class="control-label frequency-label"><label for="frequency-y" data-i18n-html="frequencyYLabel">Frequency f<sub>y</sub></label><output id="frequency-y-output" for="frequency-y">10 MHz</output></div>
+            <input id="frequency-y" type="range" min="1" max="100" step="1" value="10">
+          </fieldset>
+        </div>
+        <div class="field-readout">
+          <span>λ<sub>x</sub> = <output id="lambda-x">390.0 µm</output></span>
+          <span>p<sub>x</sub> = <output id="pitch-x">195.0 µm</output></span>
+          <span>λ<sub>y</sub> = <output id="lambda-y">390.0 µm</output></span>
+          <span>p<sub>y</sub> = <output id="pitch-y">195.0 µm</output></span>
+        </div>
+        <div class="frequency-actions">
+          <button id="frequency-match" type="button" data-i18n-html="matchFrequencies">MATCH f<sub>y</sub> TO f<sub>x</sub></button>
+          <p id="coherence-note" data-i18n="coherenceLocked">Equal frequencies and a common temporal phase preserve the stationary RF-null lattice.</p>
+        </div>
       </div>
     </section>
 
-    <section class="model section-pad" id="model" aria-labelledby="model-title">
-      <div class="model-intro reveal">
-        <div class="section-index">04 / MODEL WINDOW</div>
-        <h2 id="model-title">A quantitative starting point.<br><em>Not a performance claim.</em></h2>
-        <p>These values come from the supplied idealized analytical model for <sup>40</sup>Ca<sup>+</sup>, using an assumed SAW velocity of 3,900 m/s and a traveling-wave potential amplitude at the ion plane of 1 V. They do not represent an experimentally demonstrated device.</p>
+    <section class="advantages section-pad" id="advantages" aria-labelledby="advantages-title">
+      <div class="advantages-intro reveal">
+        <div class="section-index" data-i18n="advantagesIndex">04 / ADVANTAGES</div>
+        <h2 id="advantages-title" data-i18n-html="advantagesTitle">Why define the trap<br><em>with waves?</em></h2>
+        <p data-i18n="advantagesIntro">The architecture moves part of the spatial patterning task from dense local RF metal to a coherent acoustic field. These are design opportunities to validate—not measured performance claims.</p>
       </div>
-
-      <div class="model-grid reveal">
-        <div class="metric feature-metric"><span>FIXED-HEIGHT PSEUDOPOTENTIAL BARRIER</span><strong>0.317<small>eV</small></strong><p>Model value at A<sub>h</sub> = 1 V. This is not the full 3D trap depth because the RF null extends axially.</p></div>
-        <div class="metric"><span>100 MHz / MODEL</span><strong>27.58<small>µm</small></strong><p>Nearest-neighbor lattice spacing at λ = 39 µm.</p></div>
-        <div class="metric"><span>10 MHz / MODEL</span><strong>275.77<small>µm</small></strong><p>Nearest-neighbor lattice spacing at λ = 390 µm.</p></div>
-        <div class="metric"><span>COHERENT DRIVE</span><strong>4<small>directions</small></strong><p>Conceptual two-axis standing-wave topology.</p></div>
+      <div class="advantages-grid">
+        <article class="advantage-card reveal"><span>01</span><h3 data-i18n="advantage1Title">Field-defined periodicity</h3><p data-i18n="advantage1Body">A coherent two-axis SAW field can create a regular checkerboard of radial RF-null lines without assigning a separate RF electrode feature to every lattice site.</p></article>
+        <article class="advantage-card reveal"><span>02</span><h3 data-i18n="advantage2Title">Global electronic translation</h3><p data-i18n="advantage2Body">Independent spatial phases translate the complete null pattern in two dimensions while preserving pair separations at fixed wavelength.</p></article>
+        <article class="advantage-card reveal"><span>03</span><h3 data-i18n="advantage3Title">Wavelength-set geometry</h3><p data-i18n="advantage3Body">Frequency sets the acoustic wavelength and nominal site spacing, creating a direct design link between the RF network and lattice geometry.</p></article>
+        <article class="advantage-card reveal"><span>04</span><h3 data-i18n="advantage4Title">Planar integration path</h3><p data-i18n="advantage4Body">The wave-defined radial pattern can be co-designed with dedicated DC confinement, optical access, compensation and readout on a planar platform.</p></article>
       </div>
-
-      <div class="model-table-wrap reveal">
-        <table>
-          <caption>Idealized reference sweep at fixed A<sub>h</sub> = 1 V</caption>
-          <thead><tr><th scope="col">RF frequency</th><th scope="col">SAW wavelength</th><th scope="col">Lattice spacing</th><th scope="col">Local radial frequency</th></tr></thead>
-          <tbody>
-            <tr><td>1 MHz</td><td>3,900 µm</td><td>2,757.72 µm</td><td>0.248 MHz</td></tr>
-            <tr><td>10 MHz</td><td>390 µm</td><td>275.77 µm</td><td>2.476 MHz</td></tr>
-            <tr><td>50 MHz</td><td>78 µm</td><td>55.15 µm</td><td>12.378 MHz</td></tr>
-            <tr><td>100 MHz</td><td>39 µm</td><td>27.58 µm</td><td>24.756 MHz</td></tr>
-          </tbody>
-        </table>
-        <p class="table-note">Fixed potential amplitude is not fixed input power. A fabricated IDT may not span this frequency range.</p>
-      </div>
+      <p class="advantages-caveat reveal" data-i18n="advantagesCaveat">Practical benefit depends on crystal anisotropy, acoustic loss, RF-to-SAW transfer, thermal loading, phase coherence and a compatible three-dimensional DC geometry.</p>
     </section>
 
     <section class="proof section-pad" aria-labelledby="proof-title">
-      <div class="section-index reveal">05 / PROOF PATH</div>
+      <div class="section-index reveal" data-i18n="proofIndex">05 / PROOF PATH</div>
       <div class="proof-title reveal">
-        <p class="kicker">The honest next questions</p>
-        <h2 id="proof-title">From elegant field<br>to working hardware.</h2>
+        <p class="kicker" data-i18n="proofKicker">The honest next questions</p>
+        <h2 id="proof-title" data-i18n-html="proofTitle">From elegant field<br>to working hardware.</h2>
       </div>
       <div class="proof-list">
-        <article class="reveal"><span>01</span><h3>Close 3D confinement</h3><p>Co-design finite SAW geometry with DC electrodes and evaluate full driven escape paths.</p></article>
-        <article class="reveal"><span>02</span><h3>Calibrate the chain</h3><p>Measure RF input → SAW amplitude → vacuum potential at the ion plane.</p></article>
-        <article class="reveal"><span>03</span><h3>Control micromotion</h3><p>Validate multichannel phase stability, null placement, and compensation under realistic errors.</p></article>
-        <article class="reveal"><span>04</span><h3>Measure the noise</h3><p>Characterize heating, thermal load, acoustic loss, and surface-related noise in UHV.</p></article>
+        <article class="reveal"><span>01</span><h3 data-i18n="proof1Title">Close 3D confinement</h3><p data-i18n="proof1Body">Co-design finite SAW geometry with DC electrodes and evaluate full driven escape paths.</p></article>
+        <article class="reveal"><span>02</span><h3 data-i18n="proof2Title">Calibrate the chain</h3><p data-i18n="proof2Body">Measure RF input → SAW amplitude → vacuum potential at the ion plane.</p></article>
+        <article class="reveal"><span>03</span><h3 data-i18n="proof3Title">Control micromotion</h3><p data-i18n="proof3Body">Validate multichannel phase stability, null placement, and compensation under realistic errors.</p></article>
+        <article class="reveal"><span>04</span><h3 data-i18n="proof4Title">Measure the noise</h3><p data-i18n="proof4Body">Characterize heating, thermal load, acoustic loss, and surface-related noise in UHV.</p></article>
       </div>
     </section>
 
     <section class="contact section-pad" id="contact" aria-labelledby="contact-title">
       <div class="contact-mark" aria-hidden="true"><img src="assets/favicon.svg" alt=""></div>
-      <div class="section-index reveal">06 / CONNECT</div>
+      <div class="section-index reveal" data-i18n="connectIndex">06 / CONNECT</div>
       <div class="contact-copy">
-        <p class="kicker reveal">Physics is a team sport.</p>
-        <h2 id="contact-title" class="reveal">Let’s build the<br>next trap.</h2>
+        <p class="kicker reveal" data-i18n="contactKicker">Physics is a team sport.</p>
+        <h2 id="contact-title" class="reveal" data-i18n-html="contactTitle">Let’s build the<br>next trap.</h2>
         <div class="contact-actions reveal">
-          <a class="button-primary" href="mailto:zbwang86@gmail.com">Start a conversation <span aria-hidden="true">↗</span></a>
-          <a class="text-link" href="https://github.com/wzbozz" target="_blank" rel="noreferrer">Follow the work on GitHub <span aria-hidden="true">↗</span></a>
+          <a class="button-primary" href="mailto:zbwang86@gmail.com"><span data-i18n="startConversation">Start a conversation</span> <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="https://github.com/wzbozz" target="_blank" rel="noreferrer"><span data-i18n="followGithub">Follow the work on GitHub</span> <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
@@ -171,8 +186,8 @@
 
   <footer class="site-footer">
     <a class="brand" href="#top"><img src="assets/favicon.svg" alt="" width="34" height="34"><span>IdentiQ</span></a>
-    <div class="footer-meta"><span>全同量芯</span><span>WAVE-DEFINED ION TRAPPING</span></div>
-    <div class="footer-copy"><span>© <span data-year></span> IDENTIQ</span><a href="#top">BACK TO TOP ↑</a></div>
+    <div class="footer-meta"><span data-i18n="footerCompany">IDENTIQ QUANTUM TECHNOLOGIES</span><span data-i18n="footerTagline">WAVE-DEFINED ION TRAPPING</span></div>
+    <div class="footer-copy"><span>© <span data-year></span> IDENTIQ</span><a href="#top" data-i18n="backToTop">BACK TO TOP ↑</a></div>
   </footer>
 
   <script src="assets/js/company.js"></script>
