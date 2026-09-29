@@ -9,16 +9,21 @@
   menuButton?.addEventListener('click', () => {
     const open = menuButton.getAttribute('aria-expanded') !== 'true';
     menuButton.setAttribute('aria-expanded', String(open));
-    nav.classList.toggle('open', open);
+    nav?.classList.toggle('open', open);
+    header?.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
+
   nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
     menuButton?.setAttribute('aria-expanded', 'false');
     nav.classList.remove('open');
+    header?.classList.remove('menu-open');
     document.body.style.overflow = '';
   }));
 
-  document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  const year = document.querySelector('[data-year]');
+  if (year) year.textContent = new Date().getFullYear();
+
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const reveals = document.querySelectorAll('.reveal');
   if (reducedMotion || !('IntersectionObserver' in window)) {
@@ -31,63 +36,125 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: .12 });
+    }, { threshold: .11 });
     reveals.forEach((element) => observer.observe(element));
   }
 
-  const canvas = document.getElementById('quantum-canvas');
-  if (!canvas) return;
-  const context = canvas.getContext('2d');
-  const pointer = { x: 0, y: 0 };
-  let width = 0, height = 0, ratio = 1, frame = 0, particles = [];
-  const resize = () => {
+  const fitCanvas = (canvas, context) => {
     const bounds = canvas.getBoundingClientRect();
-    ratio = Math.min(window.devicePixelRatio || 1, 2);
-    width = Math.max(1, bounds.width); height = Math.max(1, bounds.height);
-    canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio);
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.max(1, Math.round(bounds.width * ratio));
+    canvas.height = Math.max(1, Math.round(bounds.height * ratio));
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
-    const count = Math.max(24, Math.min(54, Math.round(width / 9)));
-    particles = Array.from({ length: count }, (_, index) => ({
-      angle: (index / count) * Math.PI * 2,
-      radius: 55 + Math.random() * Math.min(width, height) * .39,
-      speed: .00025 + Math.random() * .00045,
-      phase: Math.random() * Math.PI * 2,
-      size: Math.random() > .83 ? 2.2 : 1
-    }));
+    return { width: bounds.width, height: bounds.height };
   };
-  const draw = (time = 0) => {
-    context.clearRect(0, 0, width, height);
-    const centerX = width / 2 + pointer.x * 12;
-    const centerY = height * .49 + pointer.y * 12;
-    const points = particles.map((particle) => {
-      const angle = particle.angle + time * particle.speed;
-      const wave = Math.sin(time * .0007 + particle.phase) * 8;
-      return { x: centerX + Math.cos(angle) * (particle.radius + wave) * .72, y: centerY + Math.sin(angle) * (particle.radius + wave), size: particle.size };
-    });
-    context.lineWidth = .55;
-    points.forEach((point, i) => {
-      points.slice(i + 1).forEach((other) => {
-        const distance = Math.hypot(point.x - other.x, point.y - other.y);
-        if (distance < 92) {
-          context.strokeStyle = `rgba(184,255,44,${.22 * (1 - distance / 92)})`;
-          context.beginPath(); context.moveTo(point.x, point.y); context.lineTo(other.x, other.y); context.stroke();
+
+  const fieldCanvas = document.getElementById('field-canvas');
+  if (fieldCanvas) {
+    const context = fieldCanvas.getContext('2d');
+    let fieldSize = { width: 1, height: 1 };
+    let fieldFrame = 0;
+    const resizeField = () => { fieldSize = fitCanvas(fieldCanvas, context); };
+    const drawField = (time = 0) => {
+      const { width, height } = fieldSize;
+      context.clearRect(0, 0, width, height);
+      const cell = Math.max(25, width / 14);
+      const shift = reducedMotion ? 0 : Math.sin(time * .00042) * cell * .16;
+      const radius = cell * .34;
+
+      for (let row = -1; row < Math.ceil(height / cell) + 1; row += 1) {
+        for (let column = -1; column < Math.ceil(width / cell) + 1; column += 1) {
+          const x = column * cell + shift;
+          const y = row * cell - shift;
+          const alternating = (row + column) % 2 === 0;
+          const alpha = alternating ? .68 : .2;
+          const glow = context.createRadialGradient(x, y, 0, x, y, radius * 2.4);
+          glow.addColorStop(0, `rgba(117,225,223,${alpha})`);
+          glow.addColorStop(.22, `rgba(8,190,198,${alpha * .36})`);
+          glow.addColorStop(1, 'rgba(8,190,198,0)');
+          context.fillStyle = glow;
+          context.beginPath();
+          context.arc(x, y, radius * 2.4, 0, Math.PI * 2);
+          context.fill();
+          context.fillStyle = alternating ? 'rgba(238,255,255,.72)' : 'rgba(8,190,198,.28)';
+          context.fillRect(x - .8, y - .8, 1.6, 1.6);
         }
-      });
-      context.fillStyle = i % 9 === 0 ? '#b8ff2c' : 'rgba(242,241,237,.66)';
-      context.beginPath(); context.arc(point.x, point.y, point.size, 0, Math.PI * 2); context.fill();
+      }
+
+      context.strokeStyle = 'rgba(117,225,223,.15)';
+      context.lineWidth = 1;
+      for (let index = 0; index < 7; index += 1) {
+        context.beginPath();
+        const inset = 82 + index * 22;
+        context.ellipse(width / 2, height / 2, Math.max(12, width / 2 - inset), Math.max(12, height / 2 - inset), Math.PI / 4, 0, Math.PI * 2);
+        context.stroke();
+      }
+
+      if (!reducedMotion) fieldFrame = requestAnimationFrame(drawField);
+    };
+    resizeField();
+    drawField();
+    window.addEventListener('resize', resizeField, { passive: true });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelAnimationFrame(fieldFrame);
+      else if (!reducedMotion) fieldFrame = requestAnimationFrame(drawField);
     });
-    if (!reducedMotion) frame = requestAnimationFrame(draw);
-  };
-  canvas.addEventListener('pointermove', (event) => {
-    const bounds = canvas.getBoundingClientRect();
-    pointer.x = (event.clientX - bounds.left) / bounds.width - .5;
-    pointer.y = (event.clientY - bounds.top) / bounds.height - .5;
-  });
-  canvas.addEventListener('pointerleave', () => { pointer.x = 0; pointer.y = 0; });
-  window.addEventListener('resize', resize, { passive: true });
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) cancelAnimationFrame(frame);
-    else if (!reducedMotion) frame = requestAnimationFrame(draw);
-  });
-  resize(); draw();
+  }
+
+  const phaseCanvas = document.getElementById('phase-canvas');
+  const phaseControl = document.getElementById('phase-control');
+  const phaseOutput = document.getElementById('phase-output');
+  if (phaseCanvas && phaseControl && phaseOutput) {
+    const context = phaseCanvas.getContext('2d');
+    let phaseSize = { width: 1, height: 1 };
+    const resizePhase = () => {
+      phaseSize = fitCanvas(phaseCanvas, context);
+      drawPhase();
+    };
+    const drawPhase = () => {
+      const { width, height } = phaseSize;
+      const value = Number(phaseControl.value) / 100;
+      const phase = value * Math.PI;
+      context.clearRect(0, 0, width, height);
+
+      const image = context.createImageData(Math.max(1, Math.floor(width)), Math.max(1, Math.floor(height)));
+      const scale = Math.PI * 7 / Math.max(width, height);
+      for (let y = 0; y < image.height; y += 1) {
+        for (let x = 0; x < image.width; x += 1) {
+          const fieldX = Math.sin((x - width / 2) * scale + phase);
+          const fieldY = Math.sin((y - height / 2) * scale);
+          const energy = Math.min(1, Math.abs(fieldX * fieldX - fieldY * fieldY));
+          const index = (y * image.width + x) * 4;
+          image.data[index] = Math.round(2 + energy * 30);
+          image.data[index + 1] = Math.round(18 + energy * 174);
+          image.data[index + 2] = Math.round(28 + energy * 174);
+          image.data[index + 3] = 255;
+        }
+      }
+      context.putImageData(image, 0, 0);
+
+      const cell = Math.max(34, width / 9);
+      const shift = (value * cell) / 2;
+      for (let row = -1; row < height / cell + 2; row += 1) {
+        for (let column = -1; column < width / cell + 2; column += 1) {
+          if ((row + column) % 2 !== 0) continue;
+          const x = column * cell - shift;
+          const y = row * cell;
+          context.fillStyle = 'rgba(246,248,247,.9)';
+          context.beginPath();
+          context.arc(x, y, 2.2, 0, Math.PI * 2);
+          context.fill();
+        }
+      }
+    };
+    const updatePhase = () => {
+      const value = Number(phaseControl.value) / 100;
+      phaseOutput.value = `${value.toFixed(2)}π`;
+      drawPhase();
+    };
+    phaseControl.addEventListener('input', updatePhase);
+    window.addEventListener('resize', resizePhase, { passive: true });
+    resizePhase();
+    updatePhase();
+  }
 })();

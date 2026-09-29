@@ -1,10 +1,11 @@
-# Quanputer website
+# IdentiQ website
 
-Static company website for GitHub Pages. The current landing page is intentionally dependency-free and is built with semantic HTML, responsive CSS, and a small vanilla JavaScript visualization.
+Static company website for GitHub Pages. The current landing page presents IdentiQ's research-stage, wave-defined ion-trap architecture. It is dependency-free and built with semantic HTML, responsive CSS, and small vanilla JavaScript visualizations.
 
 - Entry point: `index.html`
 - Visual system: `assets/css/company.css`
-- Interaction and canvas animation: `assets/js/company.js`
+- Interaction and scientific canvas visualizations: `assets/js/company.js`
+- Brand artwork: `assets/identiq-logo-transparent.png` and `assets/favicon.svg`
 - Local preview: `python3 -m http.server 4173`
 
 The previous Jekyll blog content remains in the repository for reference, but the public homepage no longer depends on Jekyll.
