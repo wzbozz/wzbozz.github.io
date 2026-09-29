@@ -54,26 +54,11 @@ img { display: block; max-width: 100%; }
 .status i, .live i { width: 7px; height: 7px; background: var(--cyan); border-radius: 50%; box-shadow: 0 0 0 5px rgba(8, 190, 198, .12); animation: pulse 2.4s ease-in-out infinite; }
 
 .field-stage { position: relative; align-self: center; justify-self: end; aspect-ratio: 1; width: min(100%, 580px); overflow: hidden; color: var(--white); background: var(--navy-deep); border: 1px solid rgba(3, 36, 61, .2); box-shadow: 0 26px 70px rgba(3, 36, 61, .14); }
-.field-stage::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(8, 190, 198, .1), transparent 48%); pointer-events: none; }
 #field-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .stage-top, .stage-bottom { position: absolute; z-index: 5; right: 1rem; left: 1rem; display: flex; justify-content: space-between; color: rgba(255, 255, 255, .62); }
 .stage-top { top: 1rem; }
 .stage-bottom { bottom: 1rem; }
 .live { display: flex; gap: .5rem; align-items: center; color: var(--cyan-soft); }
-.idt { position: absolute; z-index: 3; opacity: .75; }
-.idt::before, .idt::after { content: ""; position: absolute; background: repeating-linear-gradient(90deg, var(--cyan-soft) 0 3px, transparent 3px 8px); }
-.idt-top, .idt-bottom { left: 31%; width: 38%; height: 28px; }
-.idt-top { top: 42px; }
-.idt-bottom { bottom: 42px; }
-.idt-top::before, .idt-top::after, .idt-bottom::before, .idt-bottom::after { inset: 0; }
-.idt-left, .idt-right { top: 31%; width: 28px; height: 38%; }
-.idt-left { left: 42px; }
-.idt-right { right: 42px; }
-.idt-left::before, .idt-left::after, .idt-right::before, .idt-right::after { inset: 0; transform: rotate(90deg); }
-.ion { position: absolute; z-index: 4; left: 50%; top: 50%; width: 88px; height: 88px; border: 1px solid rgba(255,255,255,.26); border-radius: 50%; transform: translate(-50%, -50%); animation: orbit 12s linear infinite; }
-.ion::before, .ion::after { content: ""; position: absolute; inset: 18px -26px; border: 1px solid rgba(8,190,198,.42); border-radius: 50%; }
-.ion::after { transform: rotate(60deg); }
-.ion span { position: absolute; left: 50%; top: 50%; width: 13px; height: 13px; background: var(--cyan-soft); border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 10px var(--cyan), 0 0 38px 14px rgba(8, 190, 198, .34); }
 .brand-strip { display: flex; gap: 2rem; align-items: center; justify-content: space-between; min-height: 132px; padding: 1rem var(--pad); background: var(--white); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
 .brand-strip img { width: clamp(210px, 21vw, 320px); mix-blend-mode: multiply; }
 .brand-strip p { max-width: 460px; margin: 0; color: var(--muted); font-size: .9rem; }
@@ -94,15 +79,11 @@ img { display: block; max-width: 100%; }
 .architecture-diagram { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(3rem, 8vw, 9rem); align-items: center; }
 .diagram-chip { position: relative; min-height: 590px; overflow: hidden; background: #eaf0ef; border: 1px solid var(--line-dark); }
 .chip-grid { position: absolute; inset: 0; opacity: .72; background-image: radial-gradient(circle, rgba(3,36,61,.2) 1px, transparent 1px), linear-gradient(45deg, transparent 48%, rgba(8,190,198,.16) 49% 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(8,190,198,.16) 49% 51%, transparent 52%); background-size: 38px 38px, 152px 152px, 152px 152px; transform: perspective(800px) rotateX(62deg) rotateZ(45deg) scale(1.5); }
-.diagram-chip::before, .diagram-chip::after { content: ""; position: absolute; background: repeating-linear-gradient(90deg, var(--navy) 0 8px, transparent 8px 18px); }
-.diagram-chip::before { top: 50%; left: 0; width: 100%; height: 38px; transform: translateY(-50%); }
-.diagram-chip::after { top: 0; left: 50%; width: 100%; height: 38px; transform: translateX(-50%) rotate(90deg); }
-.wave { position: absolute; inset: 12%; border: 1px solid var(--cyan); border-radius: 50%; opacity: .28; }
-.wave::before, .wave::after { content: ""; position: absolute; border: 1px solid var(--cyan); border-radius: 50%; }
-.wave::before { inset: 14%; }
-.wave::after { inset: 30%; }
-.wave-x { transform: scaleX(.38); }
-.wave-y { transform: scaleY(.38); }
+.diagram-chip::before, .diagram-chip::after { display: none; }
+.wave { position: absolute; inset: 10%; border: 0; opacity: .34; }
+.wave::before, .wave::after { display: none; }
+.wave-x { background: repeating-linear-gradient(90deg, rgba(8,190,198,.58) 0 2px, transparent 2px 38px); mask-image: linear-gradient(to bottom, transparent, black 18% 82%, transparent); }
+.wave-y { background: repeating-linear-gradient(0deg, rgba(8,190,198,.58) 0 2px, transparent 2px 38px); mask-image: linear-gradient(to right, transparent, black 18% 82%, transparent); }
 .chip-ion { position: absolute; z-index: 3; left: 50%; top: 44%; width: 18px; height: 18px; background: var(--signal); border: 5px solid var(--white); border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 0 1px var(--signal), 0 14px 28px rgba(3,36,61,.22); }
 .chip-ion::after { content: "ION"; position: absolute; top: 25px; left: 50%; color: var(--navy); font-family: var(--mono); font-size: .56rem; letter-spacing: .14em; transform: translateX(-50%); }
 .chip-label { position: absolute; z-index: 4; padding: .4rem .55rem; color: var(--white); background: var(--navy); }
@@ -178,7 +159,6 @@ td { font-size: clamp(1rem, 1.5vw, 1.3rem); }
 .reveal.is-visible { opacity: 1; transform: none; }
 
 @keyframes pulse { 50% { opacity: .34; transform: scale(.76); } }
-@keyframes orbit { to { transform: translate(-50%, -50%) rotate(360deg); } }
 
 @media (max-width: 1080px) {
   .hero { grid-template-columns: 1fr; padding-top: 8.5rem; }
@@ -215,10 +195,6 @@ td { font-size: clamp(1rem, 1.5vw, 1.3rem); }
   .hero h1 { font-size: clamp(2.8rem, 14vw, 4.8rem); line-height: .86; }
   .hero-actions { align-items: flex-start; flex-direction: column; }
   .field-stage { width: 100%; margin: 1rem 0 4.6rem; }
-  .idt-top, .idt-bottom { top: 34px; }
-  .idt-bottom { top: auto; bottom: 34px; }
-  .idt-left { left: 34px; }
-  .idt-right { right: 34px; }
   .brand-strip { align-items: flex-start; flex-direction: column; min-height: 0; padding-top: 1.25rem; padding-bottom: 1.25rem; }
   .brand-strip img { width: 230px; }
   .stage-top, .stage-bottom { font-size: .52rem; }
