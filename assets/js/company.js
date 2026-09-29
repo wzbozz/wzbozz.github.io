@@ -53,19 +53,16 @@
   if (fieldCanvas) {
     const context = fieldCanvas.getContext('2d');
     let fieldSize = { width: 1, height: 1 };
-    let fieldFrame = 0;
-    const resizeField = () => { fieldSize = fitCanvas(fieldCanvas, context); };
-    const drawField = (time = 0) => {
+    const drawField = () => {
       const { width, height } = fieldSize;
       context.clearRect(0, 0, width, height);
       const cell = Math.max(25, width / 14);
-      const shift = reducedMotion ? 0 : Math.sin(time * .00042) * cell * .16;
       const radius = cell * .34;
 
       for (let row = -1; row < Math.ceil(height / cell) + 1; row += 1) {
         for (let column = -1; column < Math.ceil(width / cell) + 1; column += 1) {
-          const x = column * cell + shift;
-          const y = row * cell - shift;
+          const x = column * cell;
+          const y = row * cell;
           const alternating = (row + column) % 2 === 0;
           const alpha = alternating ? .68 : .2;
           const glow = context.createRadialGradient(x, y, 0, x, y, radius * 2.4);
@@ -89,16 +86,13 @@
         context.ellipse(width / 2, height / 2, Math.max(12, width / 2 - inset), Math.max(12, height / 2 - inset), Math.PI / 4, 0, Math.PI * 2);
         context.stroke();
       }
-
-      if (!reducedMotion) fieldFrame = requestAnimationFrame(drawField);
+    };
+    const resizeField = () => {
+      fieldSize = fitCanvas(fieldCanvas, context);
+      drawField();
     };
     resizeField();
-    drawField();
     window.addEventListener('resize', resizeField, { passive: true });
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) cancelAnimationFrame(fieldFrame);
-      else if (!reducedMotion) fieldFrame = requestAnimationFrame(drawField);
-    });
   }
 
   const phaseCanvas = document.getElementById('phase-canvas');
@@ -106,6 +100,11 @@
   const phaseOutput = document.getElementById('phase-output');
   if (phaseCanvas && phaseControl && phaseOutput) {
     const context = phaseCanvas.getContext('2d');
+    const buffer = document.createElement('canvas');
+    const bufferContext = buffer.getContext('2d');
+    const bufferSize = 240;
+    buffer.width = bufferSize;
+    buffer.height = bufferSize;
     let phaseSize = { width: 1, height: 1 };
     const resizePhase = () => {
       phaseSize = fitCanvas(phaseCanvas, context);
@@ -117,12 +116,12 @@
       const phase = value * Math.PI;
       context.clearRect(0, 0, width, height);
 
-      const image = context.createImageData(Math.max(1, Math.floor(width)), Math.max(1, Math.floor(height)));
-      const scale = Math.PI * 7 / Math.max(width, height);
+      const image = bufferContext.createImageData(bufferSize, bufferSize);
+      const scale = Math.PI * 7 / bufferSize;
       for (let y = 0; y < image.height; y += 1) {
         for (let x = 0; x < image.width; x += 1) {
-          const fieldX = Math.sin((x - width / 2) * scale + phase);
-          const fieldY = Math.sin((y - height / 2) * scale);
+          const fieldX = Math.sin((x - bufferSize / 2) * scale + phase);
+          const fieldY = Math.sin((y - bufferSize / 2) * scale);
           const energy = Math.min(1, Math.abs(fieldX * fieldX - fieldY * fieldY));
           const index = (y * image.width + x) * 4;
           image.data[index] = Math.round(2 + energy * 30);
@@ -131,7 +130,9 @@
           image.data[index + 3] = 255;
         }
       }
-      context.putImageData(image, 0, 0);
+      bufferContext.putImageData(image, 0, 0);
+      context.imageSmoothingEnabled = true;
+      context.drawImage(buffer, 0, 0, width, height);
 
       const cell = Math.max(34, width / 9);
       const shift = (value * cell) / 2;
