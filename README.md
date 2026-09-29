@@ -1,4 +1,15 @@
-## My extra customization
+# Quanputer website
+
+Static company website for GitHub Pages. The current landing page is intentionally dependency-free and is built with semantic HTML, responsive CSS, and a small vanilla JavaScript visualization.
+
+- Entry point: `index.html`
+- Visual system: `assets/css/company.css`
+- Interaction and canvas animation: `assets/js/company.js`
+- Local preview: `python3 -m http.server 4173`
+
+The previous Jekyll blog content remains in the repository for reference, but the public homepage no longer depends on Jekyll.
+
+## Legacy blog customization
 
 
 ### MathJax
