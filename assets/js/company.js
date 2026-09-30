@@ -33,7 +33,7 @@
       heroEyebrow: 'Wave-defined ion trapping', heroTitle: 'Shape the field.<br><em>Move the trap.</em>',
       heroLede: 'IdentiQ is developing a planar ion-trap architecture that uses coherent surface-acoustic-wave electric fields to define reconfigurable radial RF-null arrays.',
       exploreArchitecture: 'Explore the architecture', researchStage: 'Research-stage platform',
-      fieldAria: 'Normalized XY pseudopotential map from two orthogonal standing surface acoustic waves. Outlined points mark the checkerboard RF-null sublattice.',
+      fieldAria: 'Normalized XY pseudopotential map from two orthogonal standing surface acoustic waves. The red ion projection is placed at the central RF null at height z equals h.',
       fieldTitle: 'PSEUDOPOTENTIAL / XY PLANE', idealizedModel: 'IDEALIZED MODEL', rfNulls: 'RF NULLS',
       brandAria: 'IdentiQ brand', brandStatement: 'A wave-defined approach to scalable trapped-ion hardware.',
       thesisIndex: '01 / THESIS', thesisKicker: 'A different control surface',
@@ -75,7 +75,7 @@
       heroEyebrow: '波场定义离子阱', heroTitle: '塑造电场。<br><em>移动阱位。</em>',
       heroLede: 'IdentiQ 正在研发一种平面离子阱架构，通过相干表面声波电场定义可重构的径向射频零点阵列。',
       exploreArchitecture: '了解技术架构', researchStage: '研发阶段平台',
-      fieldAria: '两组正交驻波表面声波产生的 XY 平面归一化赝势图，轮廓点表示棋盘式射频零点子晶格。',
+      fieldAria: '两组正交驻波表面声波产生的 XY 平面归一化赝势图，红色离子投影位于高度 z 等于 h 的中心射频零点。',
       fieldTitle: '赝势 / XY 平面', idealizedModel: '理想化模型', rfNulls: '射频零点',
       brandAria: 'IdentiQ 品牌', brandStatement: '一种面向可扩展离子阱硬件的波场定义方案。',
       thesisIndex: '01 / 技术主张', thesisKicker: '不同的场控界面',
@@ -207,7 +207,7 @@
       const cycles = 5;
       fillPotentialBuffer(bufferContext, bufferSize, (x, y, size) => ({
         phaseX: (x / size - .5) * Math.PI * 2 * cycles,
-        phaseY: (y / size - .5) * Math.PI * 2 * cycles
+        phaseY: (y / size - .5) * Math.PI * 2 * cycles + Math.PI
       }));
       context.clearRect(0, 0, width, height);
       context.imageSmoothingEnabled = true;
@@ -222,7 +222,7 @@
       context.lineWidth = 1.2;
       for (let m = -cycles - 1; m <= cycles + 1; m += 1) {
         for (let n = -cycles - 1; n <= cycles + 1; n += 1) {
-          if (Math.abs((m + n) % 2) !== 1) continue;
+          if (Math.abs((m + n) % 2) !== 0) continue;
           const x = centerX + m * halfPeriod;
           const y = centerY + n * halfPeriod;
           if (x < 8 || x > width - 8 || y < 8 || y > height - 8) continue;
@@ -235,8 +235,8 @@
         }
       }
 
-      const firstNull = { x: centerX, y: centerY + halfPeriod };
-      const secondNull = { x: centerX + halfPeriod, y: centerY };
+      const firstNull = { x: centerX, y: centerY };
+      const secondNull = { x: centerX + halfPeriod, y: centerY + halfPeriod };
       context.strokeStyle = 'rgba(255,255,255,.7)';
       context.fillStyle = 'rgba(255,255,255,.82)';
       context.lineWidth = 1;
@@ -284,6 +284,35 @@
       drawArrow(centerX, height - innerEdge - 7, centerX, height - innerEdge - 25);
       drawArrow(innerEdge + 7, centerY, innerEdge + 25, centerY);
       drawArrow(width - innerEdge - 7, centerY, width - innerEdge - 25, centerY);
+
+      const ionRadius = Math.max(6, width * .013);
+      const ionGlow = context.createRadialGradient(centerX, centerY, ionRadius * .2, centerX, centerY, ionRadius * 3.2);
+      ionGlow.addColorStop(0, 'rgba(201,52,43,.52)');
+      ionGlow.addColorStop(1, 'rgba(201,52,43,0)');
+      context.fillStyle = ionGlow;
+      context.beginPath();
+      context.arc(centerX, centerY, ionRadius * 3.2, 0, Math.PI * 2);
+      context.fill();
+      context.fillStyle = '#c9342b';
+      context.strokeStyle = '#ffffff';
+      context.lineWidth = 2;
+      context.beginPath();
+      context.arc(centerX, centerY, ionRadius, 0, Math.PI * 2);
+      context.fill();
+      context.stroke();
+
+      const labelX = centerX + ionRadius + 14;
+      const labelY = centerY - ionRadius - 12;
+      context.strokeStyle = 'rgba(255,255,255,.72)';
+      context.fillStyle = 'rgba(255,255,255,.9)';
+      context.lineWidth = 1;
+      context.beginPath();
+      context.moveTo(centerX + ionRadius * .7, centerY - ionRadius * .7);
+      context.lineTo(labelX - 5, labelY + 4);
+      context.stroke();
+      context.font = `${Math.max(8, width * .014)}px SFMono-Regular, Consolas, monospace`;
+      context.textAlign = 'left';
+      context.fillText(currentLanguage === 'zh' ? '离子 @ 射频零点 · z=h' : 'ION @ RF NULL · z=h', labelX, labelY + 7);
     };
 
     const resizeField = () => {
@@ -292,6 +321,7 @@
     };
     resizeField();
     window.addEventListener('resize', resizeField, { passive: true });
+    window.addEventListener('identiq-language-change', drawField);
   }
 
   const phaseCanvas = document.getElementById('phase-canvas');
