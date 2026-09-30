@@ -111,8 +111,9 @@
     }
   };
 
-  let currentLanguage = localStorage.getItem('identiq-language') || (navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en');
-  const applyLanguage = (language) => {
+  const languageStorageKey = 'identiq-language-v2';
+  let currentLanguage = localStorage.getItem(languageStorageKey) === 'zh' ? 'zh' : 'en';
+  const applyLanguage = (language, persist = false) => {
     currentLanguage = language === 'zh' ? 'zh' : 'en';
     const copy = translations[currentLanguage];
     document.documentElement.lang = currentLanguage === 'zh' ? 'zh-CN' : 'en';
@@ -134,10 +135,10 @@
     document.querySelectorAll('[data-language]').forEach((button) => {
       button.setAttribute('aria-pressed', String(button.dataset.language === currentLanguage));
     });
-    localStorage.setItem('identiq-language', currentLanguage);
+    if (persist) localStorage.setItem(languageStorageKey, currentLanguage);
     window.dispatchEvent(new CustomEvent('identiq-language-change', { detail: { language: currentLanguage } }));
   };
-  document.querySelectorAll('[data-language]').forEach((button) => button.addEventListener('click', () => applyLanguage(button.dataset.language)));
+  document.querySelectorAll('[data-language]').forEach((button) => button.addEventListener('click', () => applyLanguage(button.dataset.language, true)));
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const reveals = document.querySelectorAll('.reveal');
